@@ -1,0 +1,243 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!-- #image -->
+
+<div id="studentCarousel" class="carousel slide mb-5 shadow-sm rounded overflow-hidden" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#studentCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#studentCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#studentCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/assets/slider1.jpg" class="d-block w-100 carousel-img" alt="Campus View">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Welcome to KNU Campus</h3>
+                <p>Empowering students for a brighter future.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/assets/slider2.jpg" class="d-block w-100 carousel-img" alt="Library">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>State-of-the-art Library</h3>
+                <p>Access thousands of resources online and offline.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/assets/slider3.jpg" class="d-block w-100 carousel-img" alt="Events">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Vibrant Student Life</h3>
+                <p>Participate in annual events and exhibitions.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#studentCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#studentCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+<!-- #img -->
+
+<div class="home-container">
+    <div class="announcement-bar d-flex align-items-center">
+        <div class="badge-announcement">ANNOUNCEMENTS</div>
+        <div class="scrolling-text">
+            <marquee>
+                <a asp-page="/Students/Create">Notice for UG Registration 2025-2026 for KNU Campus and Affiliated Colleges</a> |
+                <a asp-page="/Students/Create"> 8TH REGIONAL SCIENCE EXHIBITION...</a> |
+            </marquee>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Create" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/register.png" onerror="this.src='https://img.icons8.com/color/96/university.png'" alt="Admission" />
+                </div>
+                <h5>Register</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/search.png" alt="Curriculum" />
+                </div>
+                <h5>Search Student</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/examination.png" alt="Examination" />
+                </div>
+                <h5>Examination</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/fellowship.png" alt="Fellowship" />
+                </div>
+                <h5>Fellowship & Scholarship</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/notice.png" alt="Notice" />
+                </div>
+                <h5>Notice and Circulars</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/events.png" alt="Events" />
+                </div>
+                <h5>Events</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/library.png" alt="Library" />
+                </div>
+                <h5>Central Library</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/migration.png" alt="Migration" />
+                </div>
+                <h5>Migration Certificate</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/migration.png" alt="Migration" />
+                </div>
+                <h5>Migration Certificate</h5>
+            </a>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <a asp-page="/Students/Index" class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="~/assets/migration.png" alt="Migration" />
+                </div>
+                <h5>Migration Certificate</h5>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+
+    /* Container Background */
+.home-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Announcement Bar Style */
+.announcement-bar {
+    background: #e9ecef;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+.badge-announcement {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #3498db;
+    color: white;
+    padding: 0 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.scrolling-text {
+    padding-left: 0px;
+    font-size: 0.9rem;
+    color: #020202;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;   
+}
+a {
+  text-decoration: none; 
+  color: inherit;       
+}
+/* Feature Card Design */
+.feature-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px 15px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    height: 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.icon-wrapper {
+    margin-bottom: 20px;
+}
+
+.icon-wrapper img {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .icon-wrapper img {
+    transform: scale(1.1);
+}
+
+.feature-card h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+</style>

@@ -1,0 +1,74 @@
+@page
+@model StudentRegistrationApp.Pages.Students.EditModel
+
+@{
+    ViewData["Title"] = "Edit Registration";
+}
+
+<h1>Edit Details</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Student.ID" />
+            
+            <input type="hidden" asp-for="Student.PassportPhotoPath" />
+
+            <div class="form-group mb-3">
+                <label asp-for="Student.FullName" class="control-label"></label>
+                <input asp-for="Student.FullName" class="form-control" />
+                <span asp-validation-for="Student.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.DOB" class="control-label"></label>
+                <input asp-for="Student.DOB" class="form-control" />
+                <span asp-validation-for="Student.DOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.RegistrationNo" class="control-label"></label>
+                <input asp-for="Student.RegistrationNo" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Student.RegistrationNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.PhoneNumber" class="control-label"></label>
+                <input asp-for="Student.PhoneNumber" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Student.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Current Passport Photo</label>
+                <div class="mt-2 mb-2">
+                    <img src="@Url.Content(Model.Student.PassportPhotoPath)" class="img-thumbnail" style="width:150px;" />
+                </div>
+                
+                <label class="control-label">Upload New Photo (Leave blank to keep current)</label>
+                <input type="file" name="Upload" class="form-control" accept="image/*" />
+            </div>
+
+            <div class="form-footer">
+                <input type="submit" value="Save Changes" class="btn btn-green" />
+                <a asp-page="./Index" class="btn btn-red">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+-->
+<style>
+    .form-footer{
+        display: flex;
+        gap: 220px;
+        padding-bottom: 50px;
+        padding-top: 20px;
+    }
+</style>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

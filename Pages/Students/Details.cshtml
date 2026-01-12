@@ -1,0 +1,68 @@
+@page
+@model StudentRegistrationApp.Pages.Students.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="student-details-container mt-4">
+    <h1>Student Details</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Student.FullName)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Student.FullName)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Student.DOB)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Student.DOB)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Student.RegistrationNo)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Student.RegistrationNo)</dd>
+
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Student.PhoneNumber)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Student.PhoneNumber)</dd>
+            </dl>
+        </div>
+
+        <div class="col-md-4 text-center">
+            
+            @if (Model.Student != null)
+            {
+                <div class="row">
+                    <div class="col-md-8">
+                        </div>
+                    <div class="col-md-4">
+                        @if (!string.IsNullOrEmpty(Model.Student.PassportPhotoPath))
+                        {
+                            <img src="@Url.Content(Model.Student.PassportPhotoPath)" class="img-thumbnail" style="width:200px;" />
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="p-5 border bg-light text-muted">No Photo Available</div>
+            }
+        </div>
+    </div>
+
+    <div class="mt-4">
+    <a asp-page="./Edit" asp-route-id="@Model.Student?.ID" class="btn btn-danger">Edit</a>
+    
+    <a asp-page-handler="DownloadPdf" asp-route-id="@Model.Student?.ID" class="btn btn-primary">
+        <i class="bi bi-file-pdf"></i> Download PDF
+    </a>
+</div>
+</div>
+<style>
+    .student-details-container{
+        padding-left: 100px;
+        min-height: 90vh;
+        max-width: 90%;
+    }
+    .row{
+        font-size: 20px;
+    }
+</style>

@@ -1,0 +1,61 @@
+﻿@page
+@model StudentRegistrationApp.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Student Login</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger">@Model.ErrorMessage</div>
+                    }
+
+                    <form method="post">
+                        <div class="form-group mb-3">
+                            <label class="form-label">Registration Number</label>
+                            <input asp-for="RegistrationNo" class="form-control" placeholder="Enter Reg No" required />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Password</label>
+                            <div class="input-group">
+                                <input asp-for="Password" type="password" class="form-control" id="loginPwd" required />
+                                <button class="btn btn-outline-secondary" type="button" onclick="toggleLoginPwd()">
+                                    <i class="bi bi-eye" id="loginEye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <small>Don't have an account? <a asp-page="/Students/Signup">Register Now</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleLoginPwd() {
+            const input = document.getElementById('loginPwd');
+            const icon = document.getElementById('loginEye');
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.replace("bi-eye", "bi-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.replace("bi-eye-slash", "bi-eye");
+            }
+        }
+    </script>
+}

@@ -1,0 +1,88 @@
+@page
+@model StudentRegistrationApp.Pages.Students.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="search-page-container">
+    <h1>Student Search</h1>
+    <p>
+        <a asp-page="Create" class="btn btn-success">Register New Student</a>
+    </p>
+
+    <form asp-page="./Index" method="get" class="search-form">
+        <div class="form-actions no-color">
+            <p>
+                Search by Name or Reg. No.: 
+                <input type="text" name="SearchString" value="@Model.SearchString" class="form-control search-input" />
+                <input type="submit" value="Search" class="btn btn-blue search-button" /> 
+                <a asp-page="./Index" class="btn btn-red">Clear Filter</a>
+            </p>
+        </div>
+    </form>
+    
+    <hr />
+
+    @if (Model.Student != null && Model.Student.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].DOB)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].RegistrationNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].PassportPhotoPath)
+                    </th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Student) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DOB)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegistrationNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td> 
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                            @if (!string.IsNullOrEmpty(item.PassportPhotoPath))
+                             {
+                               <img src="@Url.Content(item.PassportPhotoPath)" style="width: 50px; height: 50px; object-fit: cover;" class="rounded-circle" />
+                             }
+                        </td>
+                        <td>
+                           <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-green">Edit</a>
+                           <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-blue">View Details</a>
+                           <a asp-page="./Delete" asp-route-id="@item.ID"class="btn btn-red">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+   }
+   else if (!string.IsNullOrEmpty(Model.SearchString)) { 
+    <p class="alert alert-warning">No students found matching your search criteria.</p>
+    }
+    else {
+        <p class="alert alert-info">Please enter a name or registration number and click 'Search' to view results.</p>
+    }
+
+</div>

@@ -1,0 +1,351 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Custom Blue Navbar if bg-primary isn't the exact blue you want */
+.bg-primary {
+    background-color: #007bff !important; /* Standard Bootstrap Blue */
+}
+
+/* Ensure navbar links are white and look clean */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* Make the Brand/Logo white too */
+.navbar-dark .navbar-brand {
+    color: #ffffff !important;
+}
+
+/* Light Black / Charcoal Footer */
+.bg-dark-custom {
+    background-color: #2c2c2c !important; /* This is a "light black" or charcoal color */
+}
+
+
+
+/* Ensure the Privacy link is a lighter gray so it doesn't vanish */
+
+.footer a.text-white-50:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+/* Main Footer Background */
+.main-footer {
+    background-color: #030a2b; /* Deep Navy Blue */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Map Styling */
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+}
+/* Heading Styling */
+.footer-heading {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+/* The Green Underline Accent */
+.heading-line {
+    width: 40px;
+    height: 3px;
+    background-color: #28a745; /* Green Line from Screenshot */
+    margin-bottom: 10px;
+}
+
+/* Link Styling */
+.footer-links li {
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.footer-links li:last-child {
+    border-bottom: none;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    font-size: 0.85rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+}
+/* Ensure all slider images have the same height */
+.carousel-img {
+    height: 500px;
+    object-fit: cover; /* This crops the image to fit without stretching */
+    filter: brightness(0.8); /* Dims the image slightly so text is easier to read */
+}
+
+/* Style the captions */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.4); /* Adds a subtle dark tint behind text */
+    border-radius: 10px;
+    padding: 10px;
+    bottom: 20px;
+}
+
+.carousel-caption h3 {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 250px;
+    }
+    .table {
+        width: 100%;
+    }
+}
+/* --- 1. Registration Form Container --- */
+
+/* Targets the element wrapping your registration form, usually the main content area */
+.registration-container {
+    max-width: 550px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.registration-container h1, .registration-container h4 {
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* --- 2. Form Group Styling --- */
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.control-label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+    display: block; /* Ensures labels are on their own line */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Primary color focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Style for the file input (Passport Photo) */
+input[type="file"] {
+    padding: 10px 0; /* Remove horizontal padding for file input */
+}
+
+
+/* --- 3. Button Styling --- */
+
+/* Style for the main Create button */
+.btn-primary {
+    background-color: #28a745; /* Success Green */
+    border-color: #28a745;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%; /* Full width button */
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34;
+    transform: translateY(-1px);
+}
+
+/* Style for the Back to List link/button */
+a.btn-secondary {
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+a.btn-secondary:hover {
+    background-color: #e2e6ea;
+}
+
+/* --- 4. Validation Error Styling --- */
+
+.text-danger {
+    color: #dc3545; /* Bootstrap Red */
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* --- 5. Custom Background (Optional) --- */
+body {
+    background-color: #f0f2f5; /* Light grey background for the whole page */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Search Form Styling --- */
+.search-form {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.search-form p {
+    display: flex; /* Makes elements align horizontally */
+    align-items: center;
+    gap: 10px; /* Space between elements */
+    margin: 0;
+}
+
+.search-input {
+    flex-grow: 1; /* Allows the input field to take up most of the space */
+    max-width: 300px;
+}
+
+.search-button {
+    /* Use your primary button color here */
+    background-color: #007bff; 
+    border-color: #007bff;
+    color: white;
+}
+
+.clear-button {
+    /* Keep the clear button looking secondary */
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    color: rgb(0, 0, 0);
+}
+.btn-green {
+    background-color: #037910; 
+    border-color: #037910;
+    color: white;
+    border: 1px solid #dee2e6;
+}
+.btn-green:hover{
+    background-color: #00b916;
+}
+.btn-blue {
+    background-color: #007bff; 
+    border-color: #007bff;
+    color: white;
+    border: 1px solid #dee2e6;
+}
+.btn-blue:hover{
+    background-color: #3f9cff;
+}
+.btn-red {
+    background-color: #ff0000; 
+    border-color: #ff0000;
+    color: white;
+    border: 1px solid #dee2e6;
+
+}
+.btn-red:hover{
+    background-color: #ff4646;
+}
+a {
+  text-decoration: none; 
+  color: inherit;       
+}
+.search-page-container, container {
+    min-height: 90vh;
+}
+.registrationsuccess-page-container {
+    min-height: 90vh;
+}
+.login-container {
+    min-height: 85vh;
+}
+.rounded-circle {
+    transition: transform 0.2s ease;
+}
+
+#profileDropdown:hover .rounded-circle {
+    transform: scale(1.1);
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
