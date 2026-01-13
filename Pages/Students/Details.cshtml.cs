@@ -53,7 +53,7 @@ namespace StudentRegistrationApp.Pages.Students
     // Pass both URIs to the service
     var pdfBytes = _pdfService.GenerateStudentPdf(student, photoUri, logoUri);
 
-    return File(pdfBytes, "application/pdf", $"{student.FullName}_Certificate.pdf");
+    return File(pdfBytes, "application/pdf", $"{student.FullName}_Admit.pdf");
 }
     }
 }

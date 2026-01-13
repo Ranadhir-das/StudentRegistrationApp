@@ -1,6 +1,6 @@
 # Student Registration & Admit Card Portal
 
-A comprehensive web-based Student Management System built with **ASP.NET Core Razor Pages**. This portal allows students to register, upload passport photos, and generate professional PDF Admit Cards/Registration Certificates.
+A comprehensive web-based Student Management System built with **ASP.NET Core Razor Pages**. This portal allows students to register, login, upload passport photos, and generate professional PDF Admit Cards/Registration Certificates.
 
 ## 🚀 Features
 
