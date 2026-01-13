@@ -23,7 +23,7 @@ A comprehensive web-based Student Management System built with **ASP.NET Core Ra
 
 | Homepage Carousel | Student Profile | PDF Certificate |
 | :--- | :--- | :--- |
-| ![Home](https://via.placeholder.com/300x150?text=KNU+Home) | ![Profile](https://via.placeholder.com/300x150?text=Student+Profile) | ![PDF](https://via.placeholder.com/300x150?text=Admit+Card) |
+| ![Home](wwwroot/assets/home.png) | ![Profile](wwwroot/assets/profile.png) | ![PDF](https://via.placeholder.com/300x150?text=Admit+Card) |
 
 *(Note: Replace these placeholders with actual screenshots from your app later!)*
 
