@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StudentRegistrationApp.Data;
@@ -11,9 +12,11 @@ using StudentRegistrationApp.Data;
 namespace StudentRegistrationApp.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    partial class SchoolContextModelSnapshot : ModelSnapshot
+    [Migration("20260131164326_RemoveOtpFields")]
+    partial class RemoveOtpFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +45,6 @@ namespace StudentRegistrationApp.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<DateTime?>("OtpExpiry")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<string>("PassportPhotoPath")
                         .IsRequired()
                         .HasColumnType("text");
@@ -63,9 +63,6 @@ namespace StudentRegistrationApp.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
-
-                    b.Property<string>("ResetOtp")
-                        .HasColumnType("text");
 
                     b.HasKey("ID");
 

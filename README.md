@@ -23,7 +23,7 @@ A comprehensive web-based Student Management System built with **ASP.NET Core Ra
 
 | Homepage Carousel | Student Profile | PDF Certificate |
 | :--- | :--- | :--- |
-| ![Home](wwwroot/assets/home.png) | ![Profile](wwwroot/assets/profile.png) | ![PDF](https://via.placeholder.com/300x150?text=Admit+Card) |
+| ![Home](wwwroot/assets/home.png) | ![Profile](wwwroot/assets/profile.png) |
 
 *(Note: Replace these placeholders with actual screenshots from your app later!)*
 

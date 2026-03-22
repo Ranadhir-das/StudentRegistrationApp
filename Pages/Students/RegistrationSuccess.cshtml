@@ -1,9 +1,149 @@
 @page
+@model StudentRegistrationApp.Pages.Students.RegistrationSuccessModel
 @{
-    ViewData["Title"] = "Registration Successful";
+    ViewData["Title"] = "Registration Slip";
 }
-<div class="registrationsuccess-page-container">
-<h1>Registration Successful</h1>
-<p>Thank you for registering your account!</p>
-<a href="/">Go to Home</a>
+
+<div class="container mt-5">
+    <div id="printableSlip" class="card shadow-lg border-0 mx-auto" style="max-width: 850px;">
+        
+        <div class="card-header text-white p-4">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <h2 class="mb-1 fw-bold">KAJI NAZRUL UNIVERSITY</h2>
+                    <p class="mb-0 text-info">Official Enrollment Confirmation - @DateTime.Now.Year</p>
+                </div>
+                <div class="col-4 text-end">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body p-5">
+            <div class="row">
+                <div class="col-md-3 text-center mb-4 mb-md-0">
+                    <img src="@Model.RegisteredStudent?.PassportPhotoPath" 
+                         alt="Passport Photo" 
+                         class="img-fluid rounded border p-1 bg-light shadow-sm" 
+                         style="max-height: 200px; width: 100%; object-fit: cover;" />
+                </div>
+
+                <div class="col-md-9 ps-md-5">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h3 class="fw-bold text-uppercase m-0">@Model.RegisteredStudent?.FullName</h3>
+                        <span class="badge bg-success">Enrolled</span>
+                    </div>
+                    
+                    <hr />
+
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label class="text-muted small d-block">Registration Number</label>
+                            <span class="fs-4 fw-bold text-primary">@TempData["GeneratedRegNo"]</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="text-muted small d-block">Registered Email</label>
+                            <span class="fw-bold">@Model.RegisteredStudent?.Email</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="text-muted small d-block">Phone Number</label>
+                            <span>@Model.RegisteredStudent?.PhoneNumber</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="text-muted small d-block">Date of Birth</label>
+                            <span>@Model.RegisteredStudent?.DOB.ToString("dd MMMM yyyy")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-top">
+                <div class="row text-center small text-muted">
+                    <div class="col-4">
+                        <p class="mb-1">Registration Date</p>
+                        <p class="fw-bold text-dark">@DateTime.Now.ToString("f")</p>
+                    </div>
+                    <div class="col-4">
+                        
+                    </div>
+                    <div class="col-4 text-end">
+                        <div style="height: 50px;"></div>
+                        <p class="border-top pt-1">Authorized Administrator</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4 mb-5 no-print">
+        <button onclick="window.print()" class="btn btn-primary btn-lg px-5 shadow me-2">
+            <i class="bi bi-printer-fill me-2"></i>Download PDF / Print Slip
+        </button><br /><br />
+        <a asp-page="/Login" class="btn btn-outline-secondary btn-lg px-4">
+            Proceed to Login
+        </a>
+    </div>
 </div>
+
+<style>
+    .card-header {
+        background-color: #007bff;
+    }
+    /* 1. Web View Styling */
+    .border-dashed { border: 2px dashed #ffc107; }
+    #printableSlip { max-width: 850px; margin: 20px auto; min-height: 500px; }
+
+    /* 2. Professional Print Styling */
+    @@media print {
+        /* Hide UI elements */
+        .no-print, .navbar, footer, .btn, .badge { 
+            display: none !important; 
+        }
+
+        @@page {
+            size: A4 portrait;
+            margin: 0; /* THE FIX: 0 margin hides the Date, Title, and URL */
+        }
+
+        body {
+            background: white !important;
+            margin: 0 !important;
+            padding: 1.5cm !important; /* Adds professional padding back inside the page */
+        }
+
+        #printableSlip {
+            width: 100% !important;
+            min-height: 20cm !important; /* THE FIX: Extends the card to cover the page */
+            border: 1px solid #000 !important;
+            box-shadow: none !important;
+            display: block !important;
+            padding: 20px !important;
+        }
+
+        /* Keep Photo and Details side-by-side */
+        .row {
+            display: flex !important;
+            flex-direction: row !important;
+        }
+
+        .col-md-4, .col-md-3 {
+            width: 180px !important;
+            flex: 0 0 180px !important;
+        }
+
+        .col-md-8, .col-md-9 {
+            flex: 1 !important;
+            padding-left: 40px !important;
+        }
+
+        .img-thumbnail, .img-fluid {
+            width: 150px !important; /* Slightly larger for the bigger page */
+            height: auto !important;
+            border: 1px solid #000 !important;
+        }
+
+        /* Text Adjustments */
+        h2 { font-size: 22pt !important; }
+        h3 { font-size: 18pt !important; }
+        .table td { font-size: 12pt !important; padding: 8px 0 !important; }
+    }
+</style>

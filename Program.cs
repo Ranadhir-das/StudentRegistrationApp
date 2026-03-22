@@ -1,7 +1,7 @@
 // Program.cs
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL; 
-using StudentRegistrationApp.Data; // Adjust namespace if necessary
+using StudentRegistrationApp.Data; 
 using WkHtmlToPdfDotNet;
 using WkHtmlToPdfDotNet.Contracts;
 using StudentRegistrationApp.Services;
@@ -21,18 +21,30 @@ builder.Services.AddScoped<PdfService>();
 
 builder.Services.AddRazorPages();
 
+//builder.Services.AddRazorPages(options =>
+//{
+    // Only allow users with an "Admin" role or a specific session to see this folder
+ //   options.Conventions.AuthorizeFolder("/admin"); 
+//});
+
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Login"; // Where to go if not logged in
+        options.LoginPath = "/Login"; 
         options.AccessDeniedPath = "/AccessDenied";
     });
 
+builder.Services.AddSession(); 
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<StudentRegistrationApp.Services.EmailService>();
+
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -44,6 +56,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseHttpsRedirection();
+
+app.UseSession();
 
 app.UseRouting();
 

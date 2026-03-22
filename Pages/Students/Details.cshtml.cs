@@ -46,11 +46,11 @@ namespace StudentRegistrationApp.Pages.Students
     string photoFullPath = Path.Combine(_hostEnvironment.WebRootPath, student.PassportPhotoPath.TrimStart('/'));
     string photoUri = new Uri(photoFullPath).AbsoluteUri;
 
-    // Physical Path for Logo (wwwroot/assets/logo.png)
+    // Physical Path for Logo
     string logoFullPath = Path.Combine(_hostEnvironment.WebRootPath, "assets", "logo.jpeg");
     string logoUri = new Uri(logoFullPath).AbsoluteUri;
 
-    // Pass both URIs to the service
+    
     var pdfBytes = _pdfService.GenerateStudentPdf(student, photoUri, logoUri);
 
     return File(pdfBytes, "application/pdf", $"{student.FullName}_Admit.pdf");

@@ -46,7 +46,16 @@
                                     <li><a class="dropdown-item" asp-page="/Students/Details" asp-route-id="@User.FindFirst("StudentId")?.Value">My Profile</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
-                                        <form method="post" asp-page="/Login" asp-page-handler="Logout">
+                                        <form method="post" asp-page="/Students/SendResetOtp">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="bi bi-key-fill me-2"></i>Reset Password
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form method="post" asp-page="/Students/Login" asp-page-handler="Logout">
                                             <button type="submit" class="dropdown-item text-danger">Logout</button>
                                         </form>
                                     </li>
@@ -64,9 +73,12 @@
                             </li>
                             -->
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-page="/Login">Login</a>
+                                <a class="nav-link text-white" asp-page="/Students/Login">Student Login</a>
                             </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Admin/Login">Admin Login</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -134,7 +146,7 @@
         </div>
         <div class="footer_bottom text-white">
         <p class="container text-center">
-            &copy; 2026 Kazi Nazrul University. All rights reserved
+            &copy; @DateTime.Now.Year Kazi Nazrul University. All rights reserved
         </p>
     </div>
     </div>

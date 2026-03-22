@@ -35,9 +35,12 @@ namespace StudentRegistrationApp.Pages
 
     if (student != null && BCrypt.Net.BCrypt.Verify(Password, student.Password))
     {
+        HttpContext.Session.SetString("UserEmail", student.Email);
+
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, student.FullName),
+            new Claim(ClaimTypes.Email, student.Email),
             new Claim("RegistrationNo", student.RegistrationNo),
             new Claim("StudentId", student.ID.ToString()),
             new Claim("ProfilePath", student.PassportPhotoPath ?? "/images/default-profile.png")

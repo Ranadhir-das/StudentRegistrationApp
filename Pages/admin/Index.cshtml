@@ -1,0 +1,86 @@
+@page
+@model StudentRegistrationApp.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<div class="container-fluid px-4 mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
+            <h5 class="mb-0"><i class="bi bi-speedometer2"></i> Admin Management Dashboard</h5>
+            <div>
+                <span class="badge bg-light text-dark me-3">Total Students: @Model.StudentList.Count</span>
+                <a asp-page-handler="Logout" class="btn btn-outline-light btn-sm">Logout</a>
+            </div>
+        </div>
+        
+        <div class="card-body bg-light">
+            <form method="get" class="row g-2 mb-4">
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                        <input type="text" name="SearchString" value="@Model.SearchString" 
+                               class="form-control border-start-0" 
+                               placeholder="Search by Name or Registration ID..." />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Filter Records</button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-white table-hover align-middle shadow-sm rounded">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>Photo</th>
+                            <th>Registration No</th>
+                            <th>Student Name</th>
+                            <th>Email Address</th>
+                            <th>Phone</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.StudentList.Any())
+                        {
+                            foreach (var item in Model.StudentList)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@Url.Content(item.PassportPhotoPath)" 
+                                             class="rounded-circle border" 
+                                             style="width:45px; height:45px; object-fit:cover;" 
+                                             alt="Student Photo" />
+                                    </td>
+                                    <td class="fw-bold text-primary">@item.RegistrationNo</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <a asp-page="/Students/Details" asp-route-id="@item.ID" 
+                                               class="btn btn-sm btn-outline-info">Details</a>
+                                            <a asp-page="/Students/Edit" asp-route-id="@item.ID" 
+                                               class="btn btn-sm btn-outline-warning">Edit</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center py-5 text-muted">
+                                    No student records found matching your search.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">

@@ -24,6 +24,10 @@ public class Student
     public string RegistrationNo { get; set; } = string.Empty;
 
     [Required]
+    [EmailAddress]
+    public string Email { get; set; } = string.Empty;
+
+    [Required]
     [StringLength(15)]
     [Phone]
     [Display(Name = "Phone Number")]
@@ -46,5 +50,8 @@ public class Student
     // The actual file handling (uploading/saving) will be done in the PageModel.
     [Display(Name = "Passport Photo")]
     public string PassportPhotoPath { get; set; } = string.Empty;
+
+    public string? ResetOtp { get; set; }
+    public DateTime? OtpExpiry { get; set; }
 }
 }

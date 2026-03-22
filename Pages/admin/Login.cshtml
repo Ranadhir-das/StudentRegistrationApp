@@ -1,0 +1,50 @@
+@page "/Admin/Login"
+@model StudentRegistrationApp.Pages.Admin.LoginModel
+@{
+    Layout = "_Layout"; // Use your standard layout or a blank one
+    ViewData["Title"] = "Admin Portal Login";
+}
+
+<div class="admin-login-container" style="margin-top: 100px;">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h4 class="mb-0">ADMIN LOGIN</h4>
+                    <small>Kazi Nazrul University</small>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div asp-validation-summary="All" class="text-danger small"></div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Admin Email</label>
+                            <input type="email" asp-for="Email" class="form-control" placeholder="admin@knu.ac.in" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" asp-for="Password" class="form-control" placeholder="••••••••" required />
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-dark btn-lg">Access Dashboard</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-light">
+                    <a asp-page="/Index" class="text-decoration-none small text-muted">← Back to Student Portal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<style>
+    .admin-login-container {
+        min-height: 90vh;
+    }
+</style>
